@@ -8,7 +8,7 @@ WORKDIR /app
 COPY payment.jar /app/payment.jar
 
 # Copy configuration files (adjust paths as needed)
-COPY config/ /app/config/
+#COPY config/ /app/config/
 
 # Expose the default Spring Boot port
 EXPOSE 8080
