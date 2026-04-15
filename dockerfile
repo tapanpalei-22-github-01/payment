@@ -5,7 +5,7 @@ FROM eclipse-temurin:21-jdk-alpine
 WORKDIR /app
 
 # Copy the Spring Boot JAR
-COPY payment-0.0.1-SNAPSHOT.jar /app/payment.jar
+COPY target/payment-0.0.1-SNAPSHOT.jar /app/payment.jar
 
 # Copy configuration files (adjust paths as needed)
 #COPY config/ /app/config/
