@@ -38,11 +38,22 @@ pipeline {
             }
         }
 
-        stage('Deploy to Kubernetes') {
+        // stage('Deploy to Kubernetes') {
+        //     steps {
+        //         sh 'kubectl apply -f k8s/deployment.yaml'
+        //         //sh 'kubectl apply -f k8s/order-service.yaml'
+        //         sh 'kubectl apply -f k8s/payment-service.yaml'
+        //     }
+        // }
+        stage('Kubernetes Deploy') {
             steps {
-                sh 'kubectl apply -f k8s/deployment.yaml'
-                //sh 'kubectl apply -f k8s/order-service.yaml'
-                sh 'kubectl apply -f k8s/payment-service.yaml'
+                withCredentials([file(credentialsId: 'docker-desktop-kubeconfig', variable: 'KUBECONFIG')]) {
+                    sh '''
+                        kubectl --kubeconfig $KUBECONFIG apply -f k8s/deployment.yaml
+                        kubectl --kubeconfig $KUBECONFIG apply -f k8s/payment-service.yaml
+                        kubectl --kubeconfig $KUBECONFIG rollout status deployment/payment-deployment
+                    '''
+                }
             }
         }
 
