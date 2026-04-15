@@ -51,7 +51,6 @@ pipeline {
                     sh '''
                         kubectl --kubeconfig $KUBECONFIG apply -f k8s/deployment.yaml
                         kubectl --kubeconfig $KUBECONFIG apply -f k8s/payment-service.yaml
-                        kubectl --kubeconfig $KUBECONFIG rollout status deployment/payment-deployment
                     '''
                 }
             }
