@@ -1,0 +1,26 @@
+# Maven build output
+target/
+*.log
+
+# Maven wrapper files (keep mvnw and mvnw.cmd, ignore the jar)
+.mvn/wrapper/maven-wrapper.jar
+
+# IDE configs
+.vscode/
+.idea/
+*.iml
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Java compiled classes
+*.class
+
+# Spring Boot specific
+application-*.properties
+application-*.yml
+
+# Other common ignores
+*.swp
+*.tmp
