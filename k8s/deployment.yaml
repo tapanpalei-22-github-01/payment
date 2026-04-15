@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: order-payment-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: order-payment
+  template:
+    metadata:
+      labels:
+        app: order-payment
+    spec:
+      containers:
+#      - name: order-service
+#        image: order-service:1.0
+#        ports:
+#        - containerPort: 8081
+      - name: payment-service
+        image: payment:1.0
+        ports:
+        - containerPort: 10080
