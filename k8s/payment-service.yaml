@@ -10,4 +10,3 @@ spec:
     - name: payment-port
       port: 10080
       targetPort: 10080
-      nodePort: 30080
