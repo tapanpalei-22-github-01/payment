@@ -45,7 +45,7 @@ pipeline {
         //         sh 'kubectl apply -f k8s/payment-service.yaml'
         //     }
         // }
-        
+
         stage('Kubernetes Deploy') {
             steps {
                 withCredentials([file(credentialsId: 'docker-desktop-kubeconfig', variable: 'KUBECONFIG')]) {
@@ -59,9 +59,14 @@ pipeline {
 
         stage('Verify') {
             steps {
-                sh 'kubectl get pods'
-                sh 'kubectl get svc'
+                withCredentials([file(credentialsId: 'docker-desktop-kubeconfig', variable: 'KUBECONFIG')]) {
+                    sh '''
+                        kubectl --kubeconfig $KUBECONFIG get pods
+                        kubectl --kubeconfig $KUBECONFIG get svc
+                    '''
+                }
             }
         }
+
 	}
 }
