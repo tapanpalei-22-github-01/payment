@@ -20,6 +20,6 @@ spec:
 #        ports:
 #        - containerPort: 8081
       - name: payment-service
-        image: payment:1.0
+        image: ghcr.io/tapanpalei-22-github-01/payment:1.0
         ports:
         - containerPort: 10080
